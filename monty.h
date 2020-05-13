@@ -39,8 +39,8 @@ typedef struct instruction_s
 } instruction_t;
 
 
-size_t print_dlistint(const dlistint_t *h);
-dlistint_t *add_dnodeint(dlistint_t **head, const int n);
+size_t print_dlistint(const stack_t *h);
+stack_t *add_dnodeint(stack_t **head, const int n);
 
 void (*get_code_fn(char *opcode))(stack_t **stack, unsigned int line_number);
 
