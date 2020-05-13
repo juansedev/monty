@@ -1,37 +1,33 @@
 #include "monty.h"
-
-
-
+/**
+ *
+ * 
+ * 
+ */
 void monty_script(FILE *input)
 {
-	char *line = NULL;
+	char *line = NULL;/*, *copy_line = NULL;*/
 	char *tk = NULL;
 	char str[MAXCHAR];
-	int i = 0;
+	int i = 1;/*, lines = 0;*/
+	/*void fn_opcode;*/
 
 	while (!feof(input))
 	{
 		line = fgets(str, MAXCHAR, input);
-		/* Primer token */
-		tk = strtok(line, " \t\n");
-		i = 0;
-		while (tk != NULL && i < 2)
-		{
-			if (strcmp(tk, "push") == 0)
-			{
-				printf("opcode= %s\n", tk);
-				tk = strtok(NULL, " \t\n");
-				printf("argument= %s\n", tk);
-				i++;
-			}
-			i++;
-		}
-		printf("\n");
+		tk = strtok(line, "\n");
+		printf("number= %d line= %s\n", i, tk);	
+		tk = strtok(NULL, "\n");
+		i++;
 	}
 	fclose(input);
 }
 
-
+/**
+ *
+ * 
+ * 
+ */
 void (*get_code_fn(char *opcode))(stack_t **stack, unsigned int line_number)
 {
 	instruction_t ins_code[] = {

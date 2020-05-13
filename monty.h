@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+extern int argument;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
