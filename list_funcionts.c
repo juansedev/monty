@@ -1,8 +1,8 @@
 #include "monty.h"
 
-size_t print_dlistint(const dlistint_t *h)
+size_t print_dlistint(const stack_t *h)
 {
-	const dlistint_t *tmp = h;
+	const stack_t *tmp = h;
 	size_t nodes = 0;
 
 	if (tmp == NULL)
@@ -19,11 +19,11 @@ size_t print_dlistint(const dlistint_t *h)
 	return (nodes);
 }
 
-dlistint_t *add_dnodeint(dlistint_t **head, const int n)
+stack_t *add_dnodeint(stack_t **head, const int n)
 {
-	dlistint_t *new_node;
+	stack_t *new_node;
 
-	new_node = malloc(sizeof(dlistint_t));
+	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 		return (NULL);
 

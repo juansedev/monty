@@ -1,4 +1,5 @@
 #include "monty.h"
+
 /**
  *
  *
@@ -11,6 +12,7 @@ int main(int argc, char *argv[]) {
 	char *line = NULL;
 	char *tk = NULL;
 	int i = 0;
+  (void)argc;
 
 	fp = fopen(filename, "r");
 	if (fp == NULL){
@@ -31,7 +33,7 @@ int main(int argc, char *argv[]) {
 			/*printf("%s \n", tk);*/
 			if (strcmp(tk, "push") == 0)
 			{
-				printf("opcode= %s \n", tk);
+				printf("opcode= %s\n", tk);
 				tk = strtok(NULL, " \t\n");
 				printf("argument= %s\n", tk);
 				i++;
