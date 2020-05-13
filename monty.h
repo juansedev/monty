@@ -1,6 +1,13 @@
 #ifndef _MONTY_H_
 #define _MONTY_H_
 
+#define MAXCHAR 1000
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
