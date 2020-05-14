@@ -5,7 +5,7 @@ void fn_push(stack_t **stack, unsigned int line_number)
 	(void)stack;
 	(void)line_number;
 
-	printf("spy push\n");
+	printf("push: %d - %d\n", line_number, argument);
 }
 
 void fn_pall(stack_t **stack, unsigned int line_number)
@@ -13,7 +13,7 @@ void fn_pall(stack_t **stack, unsigned int line_number)
 	(void)stack;
 	(void)line_number;
 
-	printf("spy pall\n");
+	printf("pall: %d - %d\n", line_number, argument);
 }
 
 void fn_pint(stack_t **stack, unsigned int line_number)
@@ -21,5 +21,5 @@ void fn_pint(stack_t **stack, unsigned int line_number)
 	(void)stack;
 	(void)line_number;
 
-	printf("spy pint\n");
+	printf("pint: %d - %d\n", line_number, argument);
 }
