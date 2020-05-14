@@ -52,6 +52,7 @@ typedef struct instruction_s
  */
 typedef struct line_s
 {
+	FILE *file_i;
 	char *opcode;
 	char *argument;
 	unsigned int number_line;

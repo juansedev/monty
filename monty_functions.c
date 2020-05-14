@@ -14,6 +14,7 @@ void monty_script(FILE *input)
 	stack_t *head = NULL;
 	int i = 1, j = 0;
 
+	line_global.file_i = input;
 	while (!feof(input))
 	{
 		line = fgets(str, MAXCHAR, input);
