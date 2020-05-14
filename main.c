@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 	fp = fopen(filename, "r");
 	if (fp == NULL)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't open file %s", filename);
+		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
 	monty_script(fp);
