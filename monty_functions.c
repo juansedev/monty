@@ -25,21 +25,14 @@ void monty_script(FILE *input)
 		{
 			if (j == 0)
 			{
-				line_global.opcode = tk_argument;
-				line_global.number_line = i;
+				line_global.opcode = tk_argument; /* safe argument*/
+				line_global.number_line = i; /*safe number_line */
 			}
-			if (j == 1 && strcmp(line_global.opcode, "push") != 0)
-			{
-				dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n",
-					line_global.number_line, line_global.opcode);
-				exit(EXIT_FAILURE);
-			}
-			else
+			if (j == 1)
 				line_global.argument = tk_argument;
+
 			tk_argument = strtok(NULL, " \t"), j++;
 		}
-		if (strcmp(line_global.opcode, "push") == 0 && j == 1)
-			line_global.argument = NULL;
 		if (tk_line)
 			get_code_fn(line_global.opcode)(&head, line_global.number_line);
 		line_global.argument = NULL;
@@ -96,8 +89,8 @@ int _isdigit(void)
 		if (line_global.argument[i] == '-' && i == 0)
 			continue;
 		if (!isdigit(line_global.argument[i]))
-			return (0);
+			return (0); /* verified each position */
 		i++;
 	}
-	return (1); /* verified each position */
+	return (1);
 }

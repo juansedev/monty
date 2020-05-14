@@ -10,14 +10,8 @@ void fn_push(stack_t **stack, unsigned int line_number)
 {
 	(void)line_number;
 
-	if (line_global.argument != NULL)
+	if (line_global.argument != NULL && _isdigit() != 0)
 	{
-		if (_isdigit() == 0)
-		{
-			dprintf(STDERR_FILENO, "L%d: usage: push integer\n",
-					line_global.number_line);
-			exit(EXIT_FAILURE);
-		}
 		add_dnodeint(stack, atoi(line_global.argument));
 		return;
 	}
@@ -34,11 +28,9 @@ void fn_push(stack_t **stack, unsigned int line_number)
  */
 void fn_pall(stack_t **stack, unsigned int line_number)
 {
-	/*(void)stack;*/
 	(void)line_number;
 
 	print_dlistint(*stack);
-	/*printf("pall: %d - %d\n", line_global.number_line, line_global.argument);*/
 }
 
 
