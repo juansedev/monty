@@ -19,7 +19,6 @@ void fn_push(stack_t **stack, unsigned int line_number)
 			line_global.number_line);
 	exit(EXIT_FAILURE);
 }
-
 /**
  * fn_pall - call the function to print elements of linked listng
  * @stack: pointer to head of stack
@@ -32,8 +31,6 @@ void fn_pall(stack_t **stack, unsigned int line_number)
 
 	print_dlistint(*stack);
 }
-
-
 /**
  * fn_pint - call the function to prints the value at the top of the stack
  * @stack: pointer to head of stack
@@ -53,4 +50,23 @@ void fn_pint(stack_t **stack, unsigned int line_number)
 			line_global.number_line);
 		exit(EXIT_FAILURE);
 	}
+}
+/**
+ * fn_pop - call the function to delete node at beginning (top stack)
+ * @stack: pointer to head of stack
+ * @line_number: number of the line in the bytecode file
+ * Return: number of nodes in the linked list, 0 if empty
+ */
+void fn_pop(stack_t **stack, unsigned int line_number)
+{
+	(void)line_number;
+
+	if (stack && *stack)
+	{
+		delete_dnodeint_at_index(stack, 0);
+		return;
+	}
+	dprintf(STDERR_FILENO, "L%d: can't pop an empty stack\n",
+		line_global.number_line);
+	exit(EXIT_FAILURE);
 }

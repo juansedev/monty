@@ -54,6 +54,10 @@ void (*get_code_fn(char *opcode))(stack_t **stack, unsigned int line_number)
 		{"push", fn_push},
 		{"pall", fn_pall},
 		{"pint", fn_pint},
+		{"pop", fn_pop},
+		{"swap", fn_swap},
+		{"add", fn_add},
+		{"nop", fn_nop},
 		{NULL, NULL}
 	};
 	int i = 0, line = 0;
