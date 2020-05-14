@@ -82,3 +82,15 @@ void fn_swap(stack_t **stack, unsigned int line_number)
 
         print_dlistint(*stack);
 }
+/**
+ * fn_add - adds the top two elements of the stack
+ * @stack: pointer to head of stack
+ * @line_number: number of the line in the bytecode file
+ * Return: EXIT_FAILURE or return to function
+ */
+void fn_add(stack_t **stack, unsigned int line_number)
+{
+        (void)line_number;
+
+        print_dlistint(*stack);
+}
