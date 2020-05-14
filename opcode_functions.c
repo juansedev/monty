@@ -80,7 +80,7 @@ void fn_swap(stack_t **stack, unsigned int line_number)
 {
 	(void)line_number;
 
-	if (stack && *stack && (dlistint_len(*stack) > 2))
+	if (dlistint_len(*stack) >= 2)
 	{
 		swap_node(*stack);
 		return;
