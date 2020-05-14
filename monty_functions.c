@@ -82,24 +82,18 @@ void (*get_code_fn(char *opcode))(stack_t **stack, unsigned int line_number)
 
 /**
  * _isdigit - Checked if a character is a digit character
- * @c: Value in ascii to be cheke
  * Return: c if c is a digit (0) otherwise
  */
-
-int _isdigit(int c)
-{
-	int digit, i;
-
-	i = 48;
-	while (i <= 57)
-	{
-		if (c == i)
-		{
-			digit = 1;
-			break;
-		}
-		digit = 0;
-		i++;
-	}
-	return (digit);
+int _isdigit()
+{                                                                                                     int i;
+        i = 0;
+        while (line_global.argument[i])
+        {
+                if (line_global.argument[i] == '-' && i == 0)
+                        continue;
+                if (isdigit(line_global.argument[i]) == 0)
+                        return (1);
+                i++;
+        }
+        return (0);
 }

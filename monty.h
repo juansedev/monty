@@ -6,6 +6,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 
 /**
@@ -62,7 +63,7 @@ size_t print_dlistint(const stack_t *h);
 stack_t *add_dnodeint(stack_t **head, const int n);
 void free_dlistint(stack_t *head);
 
-int _isdigit(int c);
+int _isdigit();
 
 void monty_script(FILE *input);
 void validate_opcode();
