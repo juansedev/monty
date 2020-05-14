@@ -12,8 +12,7 @@ void monty_script(FILE *input)
 	char *tk_argument = NULL, *tk_line = NULL;
 	char str[MAXCHAR];
 	stack_t *head = NULL;
-	int i = 1, j = 0, lines = 0;
-	char *code = NULL;
+	int i = 1, j = 0;
 
 	while (!feof(input))
 	{
@@ -28,22 +27,21 @@ void monty_script(FILE *input)
 				line_global.opcode = tk_argument;
 				line_global.number_line = i;
 			}
-			if (j == 1)
-				line_global.argument = atoi(tk_argument);
+			if (j == 1 && strcmp(line_global.opcode, "push") != 0)
+			{
+				printf("L%d: unknown instruction %s\n", line_global.number_line,
+				line_global.opcode);
+				exit(EXIT_FAILURE);
+			}
+			else
+				line_global.argument = tk_argument;
 			tk_argument = strtok(NULL, " \t"), j++;
 		}
-		if (j == 1 && strcmp(line_global.opcode, "push") == 0)
-		{
-			lines = line_global.number_line;
-			code = line_global.opcode;
-			printf("L%d: unknown instruction %s\n", lines, code);
-			exit(EXIT_FAILURE);
-		}
-		else
-			line_global.argument = -1;
+		if (strcmp(line_global.opcode, "push") == 0 && j == 1)
+			line_global.argument = NULL;
 		if (tk_line)
 			get_code_fn(line_global.opcode)(&head, line_global.number_line);
-		line_global.argument = 0;
+		line_global.argument = NULL;
 		tk_line = strtok(NULL, "\n"), i++;
 	}
 	free_dlistint(head);

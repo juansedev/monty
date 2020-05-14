@@ -50,7 +50,7 @@ typedef struct instruction_s
 typedef struct line_s
 {
 	char *opcode;
-	int argument;
+	char *argument;
 	unsigned int number_line;
 } line_t;
 
@@ -63,6 +63,7 @@ stack_t *add_dnodeint(stack_t **head, const int n);
 void free_dlistint(stack_t *head);
 
 void monty_script(FILE *input);
+void validate_opcode();
 void (*get_code_fn(char *opcode))(stack_t **stack, unsigned int line_number);
 
 void fn_push(stack_t **stack, unsigned int line_number);

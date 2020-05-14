@@ -8,11 +8,15 @@
  */
 void fn_push(stack_t **stack, unsigned int line_number)
 {
-	/*(void)stack;*/
 	(void)line_number;
 
-	add_dnodeint(stack, line_global.argument);
-	/*printf("push: %d - %d\n", line_global.number_line, line_global.argument);*/
+	if (line_global.argument == NULL)
+	{
+		printf("error\n");
+		exit(EXIT_FAILURE);
+	}
+
+	add_dnodeint(stack, atoi(line_global.argument));
 }
 
 /**
