@@ -1,5 +1,10 @@
 #include "monty.h"
 
+/**
+ * print_dlistint - print elements of linked list
+ * @h: pointer to node
+ * Return: number of nodes in the linked list, 0 if empty
+ */
 size_t print_dlistint(const stack_t *h)
 {
 	const stack_t *tmp = h;
@@ -19,6 +24,12 @@ size_t print_dlistint(const stack_t *h)
 	return (nodes);
 }
 
+/**
+ * add_dnodeint - add a node a beggining of the linke list
+ * @head: double pointer to node
+ * @n: data to add in the node
+ * Return: pointer to node
+ */
 stack_t *add_dnodeint(stack_t **head, const int n)
 {
 	stack_t *new_node;
