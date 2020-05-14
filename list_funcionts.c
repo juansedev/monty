@@ -11,9 +11,7 @@ size_t print_dlistint(const stack_t *h)
 	size_t nodes = 0;
 
 	if (tmp == NULL)
-	{
 		return (0);
-	}
 
 	while (tmp)
 	{
@@ -37,7 +35,7 @@ stack_t *add_dnodeint(stack_t **head, const int n)
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 	{
-		printf("Error: malloc failed\n");
+		dprintf(STDERR_FILENO, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 
