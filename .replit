@@ -1,2 +1,0 @@
-language = "c"
-run = "gcc -Wall -Werror -Wextra -pedantic *.c -o monty; ./monty bytecode/00.m"
