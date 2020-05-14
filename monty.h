@@ -7,7 +7,6 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-int argument;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -39,6 +38,16 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+typedef struct line_s
+{
+        char *opcode;
+        int argument;
+        unsigned int number_line;
+} line_t;
+
+
+extern line_t line_global;
+line_t line_global;
 
 size_t print_dlistint(const stack_t *h);
 stack_t *add_dnodeint(stack_t **head, const int n);
