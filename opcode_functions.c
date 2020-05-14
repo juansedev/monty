@@ -10,13 +10,18 @@ void fn_push(stack_t **stack, unsigned int line_number)
 {
 	(void)line_number;
 
-	if (line_global.argument == NULL)
+	if (line_global.argument != NULL)
 	{
-		printf("error\n");
-		exit(EXIT_FAILURE);
+		if (_isdigit(*line_global.argument) == 0)
+		{
+			printf("L%d: usage: push integer\n", line_global.number_line);
+			exit(EXIT_FAILURE);
+		}
+		add_dnodeint(stack, atoi(line_global.argument));
+		return;
 	}
-
-	add_dnodeint(stack, atoi(line_global.argument));
+	printf("L%d: usage: push integer\n", line_global.number_line);
+	exit(EXIT_FAILURE);
 }
 
 /**

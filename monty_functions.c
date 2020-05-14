@@ -29,8 +29,7 @@ void monty_script(FILE *input)
 			}
 			if (j == 1 && strcmp(line_global.opcode, "push") != 0)
 			{
-				printf("L%d: unknown instruction %s\n", line_global.number_line,
-				line_global.opcode);
+				printf("L%d: usage: push integer\n", line_global.number_line);
 				exit(EXIT_FAILURE);
 			}
 			else
@@ -79,4 +78,28 @@ void (*get_code_fn(char *opcode))(stack_t **stack, unsigned int line_number)
 	code = line_global.opcode;
 	printf("L%d: unknown instruction %s\n", line, code);
 	exit(EXIT_FAILURE);
+}
+
+/**
+ * _isdigit - Checked if a character is a digit character
+ * @c: Value in ascii to be cheke
+ * Return: c if c is a digit (0) otherwise
+ */
+
+int _isdigit(int c)
+{
+	int digit, i;
+
+	i = 48;
+	while (i <= 57)
+	{
+		if (c == i)
+		{
+			digit = 1;
+			break;
+		}
+		digit = 0;
+		i++;
+	}
+	return (digit);
 }
