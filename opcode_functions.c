@@ -15,14 +15,14 @@ void fn_push(stack_t **stack, unsigned int line_number)
 		if (_isdigit() == 0)
 		{
 			dprintf(STDERR_FILENO, "L%d: usage: push integer\n",
-				line_global.number_line);
+					line_global.number_line);
 			exit(EXIT_FAILURE);
 		}
 		add_dnodeint(stack, atoi(line_global.argument));
 		return;
 	}
 	dprintf(STDERR_FILENO, "L%d: usage: push integer\n",
-		line_global.number_line);
+			line_global.number_line);
 	exit(EXIT_FAILURE);
 }
 
@@ -52,5 +52,12 @@ void fn_pint(stack_t **stack, unsigned int line_number)
 {
 	(void)line_number;
 
-	print_head(*stack);
+	if (stack && *stack)
+		print_head(*stack);
+	else
+	{
+		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n",
+			line_global.number_line);
+		exit(EXIT_FAILURE);
+	}
 }
