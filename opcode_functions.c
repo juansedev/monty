@@ -10,6 +10,7 @@ void fn_push(stack_t **stack, unsigned int line_number)
 {
 	/*(void)stack;*/
 	(void)line_number;
+
 	add_dnodeint(stack, line_global.argument);
 	/*printf("push: %d - %d\n", line_global.number_line, line_global.argument);*/
 }
@@ -26,7 +27,7 @@ void fn_pall(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 
 	print_dlistint(*stack);
-	printf("pall: %d - %d\n", line_global.number_line, line_global.argument);
+	/*printf("pall: %d - %d\n", line_global.number_line, line_global.argument);*/
 }
 
 
@@ -41,5 +42,5 @@ void fn_pint(stack_t **stack, unsigned int line_number)
 	(void)stack;
 	(void)line_number;
 
-	printf("pint: %d - %d\n", line_global.number_line, line_global.argument);
+	/*printf("pint: %d - %d\n", line_global.number_line, line_global.argument);*/
 }

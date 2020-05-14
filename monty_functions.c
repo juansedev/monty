@@ -12,12 +12,11 @@ void monty_script(FILE *input)
 	char *tk_argument = NULL;
 	char *tk_line = NULL;
 	char str[MAXCHAR];
-	stack_t *head;
+	stack_t *head = NULL;
 	int i = 1, j = 0;
 
 	while (!feof(input))
 	{
-		printf("->1");
 		line = fgets(str, MAXCHAR, input);
 		tk_line = strtok(line, "\n");
 		tk_argument = strtok(tk_line, " \t");
@@ -42,6 +41,7 @@ void monty_script(FILE *input)
 		tk_line = strtok(NULL, "\n");
 		i++;
 	}
+	free_dlistint(head);
 	fclose(input);
 }
 /**

@@ -60,6 +60,7 @@ line_t line_global;
 
 size_t print_dlistint(const stack_t *h);
 stack_t *add_dnodeint(stack_t **head, const int n);
+void free_dlistint(stack_t *head);
 
 void monty_script(FILE *input);
 void (*get_code_fn(char *opcode))(stack_t **stack, unsigned int line_number);
