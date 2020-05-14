@@ -69,6 +69,7 @@ stack_t *add_dnodeint(stack_t **head, const int n);
 void delete_dnodeint_at_index(stack_t **head, unsigned int index);
 void free_dlistint(stack_t *head);
 void swap_node(stack_t *stack);
+void add_topnode(stack_t **stack);
 
 int _isdigit(void);
 
@@ -85,4 +86,4 @@ void fn_add(stack_t **stack, unsigned int line_number);
 void fn_nop(stack_t **stack, unsigned int line_number);
 
 
-#endif /* monty.h */
+#endif /* MONTY_H */
