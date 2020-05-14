@@ -65,7 +65,7 @@ void (*get_code_fn(char *opcode))(stack_t **stack, unsigned int line_number)
 
 	i = 0;
 
-	while (i < 3)
+	while (ins_code[i].opcode)
 	{
 		if (strcmp(opcode, ins_code[i].opcode) == 0)
 		{
@@ -73,8 +73,7 @@ void (*get_code_fn(char *opcode))(stack_t **stack, unsigned int line_number)
 		}
 		i++;
 	}
-	line = line_global.number_line;
-	code = line_global.opcode;
+	line = line_global.number_line, code = line_global.opcode;
 	dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", line, code);
 	exit(EXIT_FAILURE);
 }

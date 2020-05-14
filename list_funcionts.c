@@ -82,20 +82,24 @@ void delete_dnodeint_at_index(stack_t **head, unsigned int index)
 	unsigned int ind_node = 0;
 
 	if (!head || !(*head))
-		return (-1);
+	{
+		dprintf(STDERR_FILENO, "L%d: can't pop an empty stack\n",
+			line_global.number_line);
+		exit(EXIT_FAILURE);
+	}
 
 	if (index == 0 && copy->next == NULL)
 	{
 		free(*head);
 		*head = NULL;
-		return (1);
+		return; /* return to next line */
 	}
 	if (index == 0 && copy->next != NULL)
 	{
 		*head = copy->next;
 		(*head)->prev = NULL;
 		free(copy);
-		return (1);
+		return; /* return to next line */
 	}
 	while (copy)
 	{
@@ -104,18 +108,20 @@ void delete_dnodeint_at_index(stack_t **head, unsigned int index)
 			(copy->prev)->next = (copy->next);
 			(copy->next)->prev = (copy->prev);
 			free(copy);
-			return (1);
+			return; /* return to next line */
 		}
 		if (ind_node == index && copy->next == NULL)
 		{
 			(copy->prev)->next = NULL;
 			free(copy);
-			return (1);
+			return; /* return to next line */
 		}
 		copy = copy->next;
 		ind_node++;
 	}
-	return (-1);
+	dprintf(STDERR_FILENO, "L%d: can't pop an empty stack\n",
+		line_global.number_line);
+	exit(EXIT_FAILURE);
 }
 /**
  * free_dlistint - Function that count all the elements of a dlistint_t list
