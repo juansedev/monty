@@ -32,10 +32,14 @@ void  print_head(const stack_t *h)
 
 	if (tmp == NULL)
 	{
-		fclose(line_global.file_i );
+		fclose(line_global.file_i);
 		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n",
 				line_global.number_line);
 			exit(EXIT_FAILURE);
+	}
+	while (tmp->next != NULL)
+	{
+		tmp = tmp->next;
 	}
 	printf("%d\n", tmp->n);
 }
