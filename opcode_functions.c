@@ -47,7 +47,7 @@ void fn_pint(stack_t **stack, unsigned int line_number)
 	{
 		fclose(line_global.file_i);
 		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n",
-			line_global.number_line);
+				line_global.number_line);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -67,7 +67,7 @@ void fn_pop(stack_t **stack, unsigned int line_number)
 		return;
 	}
 	dprintf(STDERR_FILENO, "L%d: can't pop an empty stack\n",
-		line_global.number_line);
+			line_global.number_line);
 	exit(EXIT_FAILURE);
 }
 /**
@@ -78,31 +78,14 @@ void fn_pop(stack_t **stack, unsigned int line_number)
  */
 void fn_swap(stack_t **stack, unsigned int line_number)
 {
-        (void)line_number;
+	(void)line_number;
 
-        print_dlistint(*stack);
-}
-/**
- * fn_add - adds the top two elements of the stack
- * @stack: pointer to head of stack
- * @line_number: number of the line in the bytecode file
- * Return: EXIT_FAILURE or return to function
- */
-void fn_add(stack_t **stack, unsigned int line_number)
-{
-        (void)line_number;
-
-        print_dlistint(*stack);
-}
-/**
- * fn_nop - doesnt do anything
- * @stack: pointer to head of stack
- * @line_number: number of the line in the bytecode file
- * Return: number of nodes in the linked list, 0 if empty
- */
-void fn_nop(stack_t **stack, unsigned int line_number)
-{
-        (void)line_number;
-
-        print_dlistint(*stack);
+	if (stack && *stack && (dlistint_len(*stack) > 2))
+	{
+		swap_node(*stack);
+		return;
+	}
+	dprintf(STDERR_FILENO, "L%d: can't swap, stack too short\n",
+			line_global.number_line);
+	exit(EXIT_FAILURE);
 }
