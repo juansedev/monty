@@ -61,7 +61,8 @@ typedef struct line_s
 extern line_t line_global;
 line_t line_global;
 
-size_t print_dlistint(const stack_t *h);
+void print_dlistint(const stack_t *h);
+void  print_head(const stack_t *h);
 stack_t *add_dnodeint(stack_t **head, const int n);
 void free_dlistint(stack_t *head);
 

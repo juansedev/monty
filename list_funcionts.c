@@ -5,13 +5,13 @@
  * @h: pointer to node
  * Return: number of nodes in the linked list, 0 if empty
  */
-size_t print_dlistint(const stack_t *h)
+void print_dlistint(const stack_t *h)
 {
 	const stack_t *tmp = h;
 	size_t nodes = 0;
 
 	if (tmp == NULL)
-		return (0);
+		return;
 
 	while (tmp)
 	{
@@ -19,9 +19,25 @@ size_t print_dlistint(const stack_t *h)
 		nodes++;
 		tmp = tmp->next;
 	}
-	return (nodes);
 }
 
+/**
+ * print_head - print first elements of linked list
+ * @h: pointer to node
+ * Return: void
+ */
+void  print_head(const stack_t *h)
+{
+	const stack_t *tmp = h;
+
+	if (tmp == NULL)
+	{
+		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n",
+				line_global.number_line);
+			exit(EXIT_FAILURE);
+	}
+	printf("%d\n", tmp->n);
+}
 /**
  * add_dnodeint - add a node a beggining of the linke list
  * @head: double pointer to node

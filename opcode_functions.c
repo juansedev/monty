@@ -50,8 +50,7 @@ void fn_pall(stack_t **stack, unsigned int line_number)
  */
 void fn_pint(stack_t **stack, unsigned int line_number)
 {
-	(void)stack;
 	(void)line_number;
 
-	/*printf("pint: %d - %d\n", line_global.number_line, line_global.argument);*/
+	print_head(*stack);
 }
