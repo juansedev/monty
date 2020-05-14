@@ -98,5 +98,5 @@ int _isdigit(void)
 			return (0);
 		i++;
 	}
-	return(1); /* verified each position */
+	return (1); /* verified each position */
 }
