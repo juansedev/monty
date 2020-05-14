@@ -1,30 +1,28 @@
 #include "monty.h"
 /**
+ * monty_script - This function split the input file in line  and arguments
+ * and later invoke the function acording opcode input.
+ * @input: File to read.
  *
- * 
- * 
+ * Return: Void
  */
 void monty_script(FILE *input)
 {
-	char *line = NULL;/*, *copy_line = NULL;*/
+	char *line = NULL;
 	char *tk_argument = NULL;
 	char *tk_line = NULL;
 	char str[MAXCHAR];
-	/*char *codestring = NULL;*/
 	stack_t *head;
-	int i = 1, j = 0;/*, lines = 0;*/
-
+	int i = 1, j = 0;
 
 	while (!feof(input))
 	{
+		printf("->1");
 		line = fgets(str, MAXCHAR, input);
 		tk_line = strtok(line, "\n");
-		/*printf("number= %d line= %s\n", i, tk_line);*/
-
 		tk_argument = strtok(tk_line, " \t");
-		/*printf("argument line= %s\n", tk_argument); */
 		j = 0;
-		while (tk_argument && tk_line && j < 2) /* pend valid arguments < 2*/
+		while (tk_argument && tk_line && j < 2)
 		{
 			if (j == 0)
 			{
@@ -33,13 +31,11 @@ void monty_script(FILE *input)
 			}
 			if (j == 1)
 				line_global.argument = atoi(tk_argument);
-			/*printf("number line= %d argument = %s\n", i, tk_argument);*/
 			tk_argument = strtok(NULL, " \t");
 			j++;
 		}
 		if (j == 1)
 			line_global.argument = -1;
-		/*printf("global var = %d\n opcode = %s\n", argument, codestring);*/
 		if (tk_line)
 			get_code_fn(line_global.opcode)(&head, line_global.number_line);
 		line_global.argument = 0;
@@ -49,9 +45,11 @@ void monty_script(FILE *input)
 	fclose(input);
 }
 /**
+ * get_code_fn - Pointer to function to select a correct funcion
+ * acording input opcode
+ * @opcode: String with name of the opcode
  *
- * 
- * 
+ * Return: Void
  */
 void (*get_code_fn(char *opcode))(stack_t **stack, unsigned int line_number)
 {
@@ -61,7 +59,8 @@ void (*get_code_fn(char *opcode))(stack_t **stack, unsigned int line_number)
 		{"pint", fn_pint},
 		{NULL, NULL}
 	};
-	int i = 0;
+	int i = 0, line = 0;
+	char *code = NULL;
 
 	i = 0;
 
@@ -73,6 +72,8 @@ void (*get_code_fn(char *opcode))(stack_t **stack, unsigned int line_number)
 		}
 		i++;
 	}
-	printf("L%d: unknown instruction %s\n", line_global.number_line, line_global.opcode);
+	line = line_global.number_line;
+	code = line_global.opcode;
+	printf("L%d: unknown instruction %s\n", line, code);
 	exit(EXIT_FAILURE);
 }

@@ -10,7 +10,7 @@ void fn_push(stack_t **stack, unsigned int line_number)
 {
 	/*(void)stack;*/
 	(void)line_number;
-	add_dnodeint(*stack, line_global.argument);
+	add_dnodeint(stack, line_global.argument);
 	/*printf("push: %d - %d\n", line_global.number_line, line_global.argument);*/
 }
 
