@@ -23,5 +23,5 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	monty_script(fp);
-	return (0);
+	exit(EXIT_SUCCESS);
 }

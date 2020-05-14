@@ -29,8 +29,8 @@ void monty_script(FILE *input)
 			}
 			if (j == 1 && strcmp(line_global.opcode, "push") != 0)
 			{
-				printf("L%d: unknown instruction %s\n", line_global.number_line,
-				       line_global.opcode);
+				dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n",
+					line_global.number_line, line_global.opcode);
 				exit(EXIT_FAILURE);
 			}
 			else
@@ -77,7 +77,7 @@ void (*get_code_fn(char *opcode))(stack_t **stack, unsigned int line_number)
 	}
 	line = line_global.number_line;
 	code = line_global.opcode;
-	printf("L%d: unknown instruction %s\n", line, code);
+	dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", line, code);
 	exit(EXIT_FAILURE);
 }
 
@@ -94,9 +94,9 @@ int _isdigit(void)
 	{
 		if (line_global.argument[i] == '-' && i == 0)
 			continue;
-		if (isdigit(line_global.argument[i]) > 0)
-			return (1);
+		if (!isdigit(line_global.argument[i]))
+			return (0);
 		i++;
 	}
-	return (0);
+	return(1); /* verified each position */
 }
