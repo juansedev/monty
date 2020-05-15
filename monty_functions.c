@@ -68,6 +68,7 @@ void (*get_code_fn(char *opcode))(stack_t **stack, unsigned int line_number)
 		{"div", fn_divide},
 		{"mod", fn_mod},
 		{"#", fn_comment},
+		{"pchar", fn_pchar},
 		{NULL, NULL}
 	};
 	int i = 0, line = 0;
@@ -107,7 +108,6 @@ int _isdigit(void)
 	}
 	return (1);
 }
-#include "monty.h"
 /**
  * dlistint_len - Function that count all the elements of a dlistint_t list
  * @h: Pointed to head of a list

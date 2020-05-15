@@ -63,11 +63,14 @@ extern line_t line_global;
 line_t line_global;
 
 void print_dlistint(const stack_t *h);
+void print_charlist(const stack_t *h);
 size_t dlistint_len(const stack_t *h);
 void  print_head(const stack_t *h);
+
 stack_t *add_dnodeint(stack_t **head, const int n);
 void delete_dnodeint_at_index(stack_t **head, unsigned int index);
 void free_dlistint(stack_t *head);
+
 void swap_node(stack_t *stack);
 void add_topnode(stack_t **stack);
 void sub_topnode(stack_t **stack);
@@ -84,6 +87,8 @@ void (*get_code_fn(char *opcode))(stack_t **stack, unsigned int line_number);
 void fn_push(stack_t **stack, unsigned int line_number);
 void fn_pall(stack_t **stack, unsigned int line_number);
 void fn_pint(stack_t **stack, unsigned int line_number);
+void fn_pchar(stack_t **stack, unsigned int line_number);
+
 void fn_pop(stack_t **stack, unsigned int line_number);
 void fn_swap(stack_t **stack, unsigned int line_number);
 void fn_add(stack_t **stack, unsigned int line_number);
