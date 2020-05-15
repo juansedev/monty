@@ -59,6 +59,7 @@ void (*get_code_fn(char *opcode))(stack_t **stack, unsigned int line_number)
 		{"add", fn_add},
 		{"nop", fn_nop},
 		{"sub", fn_sub},
+		{"mul", fn_mul},
 		{NULL, NULL}
 	};
 	int i = 0, line = 0;
