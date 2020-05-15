@@ -37,19 +37,15 @@ void monty_script(FILE *input)
 			}
 			if (j == 1)
 				line_global.argument = tk_argument;
-			printf("Line: %d - tk_argument = %s\n", line_global.number_line, tk_argument);
 			tk_argument = strtok(NULL, " \t\n"), j++;
-
 		}
 		if (line_global.opcode)
 			get_code_fn(line_global.opcode)(&head, line_global.number_line);
 		line_global.argument = NULL;
 		line_global.opcode = NULL, i++;
-		/*tk_line = strtok(NULL, "\n");*/
 		line = fgets(str, MAXCHAR, input);
 	}
-	free_dlistint(head);
-	fclose(input);
+	free_dlistint(head), fclose(input);
 }
 /**
  * get_code_fn - Pointer to function to select a correct funcion
@@ -107,7 +103,7 @@ int _isdigit(void)
 		i++;
 	while (line_global.argument[i])
 	{
-		 if (!isdigit(line_global.argument[i]))
+		if (!isdigit(line_global.argument[i]))
 			return (0); /* verified each position */
 		i++;
 	}
