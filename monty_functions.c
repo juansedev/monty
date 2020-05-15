@@ -16,9 +16,10 @@ void monty_script(FILE *input)
 
 	line_global.file_i = input;
 	line_global.opcode = NULL;
+	line = fgets(str, MAXCHAR, input);
 	while (!feof(input))
 	{
-		line = fgets(str, MAXCHAR, input);
+
 		tk_argument = strtok(line, " \t\n");
 		j = 0;
 		while (tk_argument && j < 2)
@@ -36,13 +37,16 @@ void monty_script(FILE *input)
 			}
 			if (j == 1)
 				line_global.argument = tk_argument;
+			printf("Line: %d - tk_argument = %s\n", line_global.number_line, tk_argument);
 			tk_argument = strtok(NULL, " \t\n"), j++;
+
 		}
 		if (line_global.opcode)
 			get_code_fn(line_global.opcode)(&head, line_global.number_line);
 		line_global.argument = NULL;
 		line_global.opcode = NULL, i++;
 		/*tk_line = strtok(NULL, "\n");*/
+		line = fgets(str, MAXCHAR, input);
 	}
 	free_dlistint(head);
 	fclose(input);
