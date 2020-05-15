@@ -72,6 +72,7 @@ void swap_node(stack_t *stack);
 void add_topnode(stack_t **stack);
 void sub_topnode(stack_t **stack);
 void mul_topnode(stack_t **stack);
+void div_topnode(stack_t **stack);
 
 int _isdigit(void);
 
@@ -88,6 +89,6 @@ void fn_add(stack_t **stack, unsigned int line_number);
 void fn_nop(stack_t **stack, unsigned int line_number);
 void fn_sub(stack_t **stack, unsigned int line_number);
 void fn_mul(stack_t **stack, unsigned int line_number);
-
+void fn_divide(stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY_H */

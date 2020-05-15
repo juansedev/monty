@@ -60,6 +60,7 @@ void (*get_code_fn(char *opcode))(stack_t **stack, unsigned int line_number)
 		{"nop", fn_nop},
 		{"sub", fn_sub},
 		{"mul", fn_mul},
+		{"div", fn_divide},
 		{NULL, NULL}
 	};
 	int i = 0, line = 0;
@@ -98,4 +99,28 @@ int _isdigit(void)
 		i++;
 	}
 	return (1);
+}
+#include "monty.h"
+/**
+ * dlistint_len - Function that count all the elements of a dlistint_t list
+ * @h: Pointed to head of a list
+ *
+ * Return: The number of nodes
+ */
+size_t dlistint_len(const stack_t *h)
+{
+	const stack_t *tmp = h;
+	size_t nodes = 0;
+
+	if (tmp == NULL)
+	{
+		return (0);
+	}
+
+	while (tmp)
+	{
+		nodes++;
+		tmp = tmp->next;
+	}
+	return (nodes);
 }
