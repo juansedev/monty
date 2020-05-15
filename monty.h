@@ -92,5 +92,6 @@ void fn_sub(stack_t **stack, unsigned int line_number);
 void fn_mul(stack_t **stack, unsigned int line_number);
 void fn_divide(stack_t **stack, unsigned int line_number);
 void fn_mod(stack_t **stack, unsigned int line_number);
+void fn_comment(stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY_H */

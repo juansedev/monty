@@ -25,12 +25,17 @@ void monty_script(FILE *input)
 		{
 			if (j == 0)
 			{
-				line_global.opcode = tk_argument; /* safe argument*/
+				if (tk_argument[0] == '#')
+				{
+					line_global.opcode = "#"; /* safe argument*/
+					i--;
+				}
+				else
+					line_global.opcode = tk_argument; /* safe argument*/
 				line_global.number_line = i; /*safe number_line */
 			}
 			if (j == 1)
 				line_global.argument = tk_argument;
-
 			tk_argument = strtok(NULL, " \t"), j++;
 		}
 		if (tk_line)
@@ -62,6 +67,7 @@ void (*get_code_fn(char *opcode))(stack_t **stack, unsigned int line_number)
 		{"mul", fn_mul},
 		{"div", fn_divide},
 		{"mod", fn_mod},
+		{"#", fn_comment},
 		{NULL, NULL}
 	};
 	int i = 0, line = 0;
