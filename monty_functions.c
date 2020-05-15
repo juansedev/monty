@@ -98,11 +98,11 @@ int _isdigit(void)
 	int i;
 
 	i = 0;
+	if (line_global.argument[0] == '-')
+		i++;
 	while (line_global.argument[i])
 	{
-		if (line_global.argument[i] == '-' && i == 0)
-			continue;
-		if (!isdigit(line_global.argument[i]))
+		 if (!isdigit(line_global.argument[i]))
 			return (0); /* verified each position */
 		i++;
 	}
