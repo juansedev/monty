@@ -29,7 +29,7 @@ void  print_charlist(const stack_t *h)
 {
 	const stack_t *tmp = h;
 
-	if (tmp->n >= 0 && tmp->n <= 127)
+	if (tmp->n >= 0 || tmp->n <= 127)
 	{
 		putchar(tmp->n), putchar('\n');
 		return;
