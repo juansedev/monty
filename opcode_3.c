@@ -37,15 +37,15 @@ void fn_comment(stack_t **stack, unsigned int line_number)
  */
 void fn_pchar(stack_t **stack, unsigned int line_number)
 {
-        (void)line_number;
+	(void)line_number;
 
-        if (stack && *stack)
-                print_charlist(*stack);
-        else
-        {
-                fclose(line_global.file_i);
-                dprintf(STDERR_FILENO, "L%d: can't pchar, stack empty\n",
-			line_global.number_line);
-                exit(EXIT_FAILURE);
-        }
+	if (stack && *stack)
+		print_charlist(*stack);
+	else
+	{
+		fclose(line_global.file_i);
+		dprintf(STDERR_FILENO, "L%d: can't pchar, stack empty\n",
+				line_global.number_line);
+		exit(EXIT_FAILURE);
+	}
 }
