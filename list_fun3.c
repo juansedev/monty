@@ -29,9 +29,9 @@ void  print_charlist(const stack_t *h)
 {
 	const stack_t *tmp = h;
 
-	if (tmp->n >= 0 || tmp->n <= 127)
+	if (tmp->n > -1 && tmp->n < 128)
 	{
-		putchar(tmp->n), putchar('\n');
+		printf("%c\n", tmp->n);
 		return;
 	}
 	dprintf(STDERR_FILENO, "L%d: can't pchar, value out of range\n",
