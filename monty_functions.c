@@ -9,19 +9,19 @@
 void monty_script(FILE *input)
 {
 	char *line = NULL;
-	char *tk_argument = NULL, *tk_line = NULL;
+	char *tk_argument = NULL;/* *tk_line = NULL;*/
 	char str[MAXCHAR];
 	stack_t *head = NULL;
 	int i = 1, j = 0;
 
 	line_global.file_i = input;
+	line_global.opcode = NULL;
 	while (!feof(input))
 	{
 		line = fgets(str, MAXCHAR, input);
-		tk_line = strtok(line, "\n");
-		tk_argument = strtok(tk_line, " \t");
+		tk_argument = strtok(line, " \t\n");
 		j = 0;
-		while (tk_argument && tk_line && j < 2)
+		while (tk_argument && j < 2)
 		{
 			if (j == 0)
 			{
@@ -36,12 +36,13 @@ void monty_script(FILE *input)
 			}
 			if (j == 1)
 				line_global.argument = tk_argument;
-			tk_argument = strtok(NULL, " \t"), j++;
+			tk_argument = strtok(NULL, " \t\n"), j++;
 		}
-		if (tk_line)
+		if (line_global.opcode)
 			get_code_fn(line_global.opcode)(&head, line_global.number_line);
 		line_global.argument = NULL;
-		tk_line = strtok(NULL, "\n"), i++;
+		line_global.opcode = NULL, i++;
+		/*tk_line = strtok(NULL, "\n");*/
 	}
 	free_dlistint(head);
 	fclose(input);
