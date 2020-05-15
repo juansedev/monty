@@ -8,13 +8,13 @@
 void fn_add(stack_t **stack, unsigned int line_number)
 {
 	(void)line_number;
-	if (stack && *stack && (dlistint_len(*stack) > 2))
-        {
-                add_topnode(stack);
-                return;
-        }
+	if (dlistint_len(*stack) >= 2)
+	{
+		add_topnode(stack);
+		return;
+	}
 	dprintf(STDERR_FILENO, "L%d: can't add, stack too short\n",
-		line_global.number_line);
+			line_global.number_line);
 	exit(EXIT_FAILURE);
 }
 /**

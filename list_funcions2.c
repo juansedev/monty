@@ -39,17 +39,17 @@ void swap_node(stack_t *stack)
 	(tmp->next)->n = data;
 }
 /**
- * add_node - add top stack
+ * add_topnode - add top stack
  * @stack: Pointed to head of a list
  *
  * Return: void
  */
 void add_topnode(stack_t **stack)
 {
-        stack_t *tmp = *stack;
-        int data = 0;
+	stack_t *tmp = *stack;
+	int data = 0;
 
-        data = tmp->n; /* save n  in data*/
+	data = tmp->n; /* save n  in data*/
+	(tmp->next)->n += data; /* safe result in new top node*/
 	delete_dnodeint_at_index(stack, 0);
-        tmp->n = tmp->n + data; /* safe result in new top node*/
 }
