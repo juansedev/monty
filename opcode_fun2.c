@@ -26,5 +26,5 @@ void fn_add(stack_t **stack, unsigned int line_number)
 void fn_nop(stack_t **stack, unsigned int line_number)
 {
 	(void)line_number;
-	print_dlistint(*stack);
+	(void)line_number;
 }
